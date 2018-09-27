@@ -1,0 +1,59 @@
+ body {
+    background-color: black;
+    font-family: 'Romanesco', cursive;
+    font-size: 2.5em;
+    margin-right: 3.5em;
+    margin-left: 3.5em; 
+}
+
+h1 {
+    color: white;
+     text-align: center;
+     padding-top: 1.2em;
+     font-size: 2em;
+
+}
+
+h2 {
+    margin: 10px;
+    padding: 10px;
+    color: white;
+     text-align: center;
+     padding-top: 1.2em;
+     font-size: 2em;
+
+}
+
+p[id="desc"] {
+    color: white;
+    padding-top: 1em;
+    text-indent: 3em;
+}
+
+.cards {
+    padding-top: 1.5em; 
+    display: flex;
+    flex-wrap: wrap;
+    text-align:center;
+}
+
+ul{
+    margin-left: 0.3em;
+    list-style-type: "🔥";
+    text-align:left;
+}
+
+
+.card {
+margin: 0.5em;
+background-color: #8C2D19;
+flex: 50 0 250px;
+font-size: 0.7em;
+
+}
+
+
+img[src="dura.jpg"] {
+      margin: left;
+      float: left;
+}
