@@ -29,7 +29,7 @@
         Quem sera?? Quem apagara o fogo ardente de Engenharia??
 
         Esta pagina foi criada para testar o sistema de apostas do novo Dux de Engenharia.
-        Aposte e ganhe premios, sancoes, colheres, praxi points e ate uma carta de uterino. Vale tudo exeto caloiras. Fica atento para quando forem abertas as votacoes para novo Dux.
+        Aposte e ganhe premios, sancoes, colheres, praxi points e ate uma carta de uterino. Vale tudo exeto caloiras. Fica atento para quando forem abertas as votacoes para os novos cavalos do conselho.
       </p>
 
 <audio id="myAudio">
