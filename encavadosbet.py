@@ -18,10 +18,10 @@ cand_template = Template(' <section class=\"card\"> <header> </header> <img src=
 
 abs_app_dir_path = os.path.dirname(os.path.realpath(__file__))
 
-bottle.TEMPLATE_PATH.insert(0, abs_app_dir_path)
+#bottle.TEMPLATE_PATH.insert(0, abs_app_dir_path)
 
-bd = sqlite3.connect('dbfinal.db')
-bd_cursor = bd.cursor()
+#bd = sqlite3.connect('dbfinal.db')
+#bd_cursor = bd.cursor()
 
 @route('/')
 def check_app():
@@ -29,21 +29,7 @@ def check_app():
     print(abs_app_dir_path)
     final_string = ''
     
-    cand = bd_cursor.execute('''SELECT NAME, MATRICULAS, CURSO, IMAGE FROM candidate''').fetchall()
-    new_candidates = []
-
-    for ca in cand:
-        new_candidate = {}
-        new_candidate['name'] = ca[0]
-        new_candidate['matriculas'] = ca[1]
-        new_candidate['curso'] = ca[2]
-        new_candidate['image'] = ca[3]
-
-        new_candidates.append(new_candidate)
-
-    print(new_candidates)
-
-    for candidate in new_candidates:
+    for candidate in candidates:
         candidate['totalvotos'] = 100
         print(candidate)
         complete_card = cand_template.substitute(candidate)
@@ -51,7 +37,7 @@ def check_app():
 
     print(final_string)
 
-    info = {'title': "Apostas Dux", 'cards':final_string}
+    info = {'title': "Apostas Encavados", 'cards':final_string}
     return template('page.tpl', info)
 
 @route('/<filename>.jpg')
@@ -82,3 +68,20 @@ def stylesheets(filename):
 if __name__ == '__main__':
     # use the Bottle framework run function to start the development server
     run(host='0.0.0.0', port=80, debug=True, reloader=True)
+
+
+
+"""    cand = bd_cursor.execute('''SELECT NAME, MATRICULAS, CURSO, IMAGE FROM candidate''').fetchall()
+    new_candidates = []
+
+    for ca in cand:
+        new_candidate = {}
+        new_candidate['name'] = ca[0]
+        new_candidate['matriculas'] = ca[1]
+        new_candidate['curso'] = ca[2]
+        new_candidate['image'] = ca[3]
+
+        new_candidates.append(new_candidate)
+
+    print(new_candidates)
+"""
