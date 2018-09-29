@@ -4,6 +4,7 @@ from time import sleep
 from functools import lru_cache
 from bottle import (post, request, response, route, run, url, Response, static_file, template)
 from string import Template
+from bottle import TEMPLATE_PATH
 import sqlite3
 
 app = bottle.default_app()
