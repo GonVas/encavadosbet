@@ -13,12 +13,24 @@ CREATE TABLE candidate (
 );
 
 
-CREATE TABLE ip_vote (
-  ip_id INTEGER PRIMARY KEY,
-  ip text NOT NULL,
-  ip_candidate INTEGER,
+CREATE TABLE vote (
+  vote_id INTEGER PRIMARY KEY,
+  who text NOT NULL,
+  what_candidate INTEGER,
+  what_bet text,
 
-  FOREIGN KEY (ip_candidate) REFERENCES candidate(id)
+  FOREIGN KEY (what_candidate) REFERENCES candidate(id),
+  FOREIGN KEY (who) REFERENCES voter(token),
+);
+
+CREATE TABLE voter (
+
+	token INTEGER PRIMARY KEY,
+	name text NOT NULL,
+	nick text NOT NULL,
+	pass text NOT NULL,
+	ative INTEGER DEFAULT 0
+
 );
 
 
@@ -31,8 +43,8 @@ VALUES (2, 'RODRIGUEZ', '10' ,'ELECTRO', 'sample2' );
 INSERT INTO candidate (ID,NAME,matriculas, curso, image)
 VALUES (3, 'TOGAPI', '9', 'BIO', 'sample2');
 
-INSERT INTO ip_vote (ip_id, ip, ip_candidate)
-VALUES (1, '192.168.12.2', 1);
+INSERT INTO ip_vote (ip_id, ip, ip_candidate, what_bet)
+VALUES (1, '192.168.12.2', 1, "1 unhada");
 
-INSERT INTO ip_vote (ip_id, ip, ip_candidate)
-VALUES (2, '192.169.12.2', 2);
+INSERT INTO ip_vote (ip_id, ip, ip_candidate, what_bet)
+VALUES (2, '192.169.12.2', 2, "4 pranchas");

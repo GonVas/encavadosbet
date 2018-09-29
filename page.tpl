@@ -5,12 +5,11 @@
   <title>{{title}}</title>
   <link href="https://fonts.googleapis.com/css?family=Romanesco" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="/start_page.css">
-  <!--link rel='shortcut icon' type='image/x-icon' href='./favicon.ico' /-->
   <link rel="shortcut icon" type='image/x-icon' href="/favicon.ico">
 
         <script type="text/javascript">
         function codeAddress() {
-            aud_play_pause();
+            //aud_play_pause();
         }
         window.onload = codeAddress;
         </script>
@@ -32,6 +31,8 @@
         Aposte e ganhe premios, sancoes, colheres, praxi points e ate uma carta de uterino. Vale tudo exeto caloiras. Fica atento para quando forem abertas as votacoes para os novos cavalos do conselho.
       </p>
 
+
+
 <audio id="myAudio">
  <source src="/eye.mp3"
          type='audio/mp3'
@@ -41,6 +42,15 @@
 
 </audio>
 <button type="button" onclick="aud_play_pause()">Musica</button>
+
+    <div class="spooky">
+      <img src="doot.gif" alt="skeleton" onmouseover="PlaySound('doot')">
+      <!--img src="tenor.gif" alt="tenor"-->
+      <img src="tpose.gif" alt="tpose" width="220" height="220" onmouseover="PlaySound('nigra')">
+      <img src="move.gif" alt="move">
+    </div>
+
+
 
 <h2>⭐️ &nbsp;Candidatos&nbsp; ⭐️ </h2>
 
@@ -59,7 +69,17 @@ function aud_play_pause() {
     myAudio.pause();
   }
 }
+
+function PlaySound(soundobj) {
+    var thissound=document.getElementById(soundobj);
+    thissound.play();
+}
+
 </script>  
+
+
+<audio id='doot' src='/doot.mp3'/>
+<audio id='nigra' src='/nigra.mp3'/>
 
 </body>
 

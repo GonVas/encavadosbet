@@ -44,29 +44,9 @@ def check_app():
     info = {'title': "Apostas Encavados", 'cards':final_string}
     return template('page.tpl', info)
 
-@route('/<filename>.jpg')
-def stylesheets(filename):
-    #Returns the jpg files
-    return static_file('{}.jpg'.format(filename), root=abs_app_dir_path)
-
-@route('/<filename>.tpl')
-def send_template(filename):
+@route('/<filename:path>')
+def send_static(filename):
     return static_file(filename, root=abs_app_dir_path)
-
-@route('/<filename>.css')
-def stylesheets(filename):
-    #Returns the css files
-    return static_file('{}.css'.format(filename), root=abs_app_dir_path)
-
-@route('/<filename>.ico')
-def stylesheets(filename):
-    #Returns the css files
-    return static_file('{}.ico'.format(filename), root=abs_app_dir_path)
-
-@route('/<filename>.mp3')
-def stylesheets(filename):
-    #Returns the css files
-    return static_file('{}.mp3'.format(filename), root=abs_app_dir_path)
 
 
 if __name__ == '__main__':
