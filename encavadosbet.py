@@ -67,7 +67,7 @@ def stylesheets(filename):
 
 if __name__ == '__main__':
     # use the Bottle framework run function to start the development server
-    run(host='0.0.0.0', port=80, debug=True, reloader=True)
+    run(host='0.0.0.0', port=8080, debug=True, reloader=True)
 
 
 
