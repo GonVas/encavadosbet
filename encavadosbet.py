@@ -81,6 +81,7 @@ if __name__ == '__main__':
         new_candidate['curso'] = ca[2]
         new_candidate['image'] = ca[3]
 
+
         new_candidates.append(new_candidate)
 
     print(new_candidates)
