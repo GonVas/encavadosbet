@@ -30,7 +30,7 @@ def check_app():
     final_string = ''
     
     for candidate in candidates:
-        candidate['totalvotos'] = 100
+        candidate['totalvotos'] = 150
         print(candidate)
         complete_card = cand_template.substitute(candidate)
         final_string += complete_card
