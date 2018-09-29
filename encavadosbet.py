@@ -7,6 +7,7 @@ from string import Template
 import sqlite3
 
 app = bottle.default_app()
+TEMPLATE_PATH.insert(0, os.path.abspath(os.path.dirname(__file__)))
 
 candidates = [{'name':'OCO', 'file':'sample', 'matriculas':'4', 'curso':'Inphormatica', 'votos':100},
 {'name':'Togapi', 'file':'sample', 'matriculas':'8', 'curso':'Metal Bio', 'votos':30},
