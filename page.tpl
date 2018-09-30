@@ -67,6 +67,25 @@
 </div> 
 
 
+<!-- The Modal -->
+<div id="registermodal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content" >
+    <span class="close" onclick="modal_block()">&times;</span>
+     <form action="/login" method="post">
+            Nome: <input name="name" type="text" />
+            Username: <input name="username" type="text" />
+            &nbsp;password: <input name="password" type="password" />
+            &nbsp;password outra vez: <input name="pass_outravez" type="password" />
+            <input type="file" name="pic" accept="image/*">
+            <input value="Login" type="submit" />
+    </form>
+  </div>
+
+</div> 
+
+
     <div class="spooky">
       <img src="doot.gif" class="floatl" alt="skeleton" onmouseover="PlaySound('doot')">
       <!--img src="tenor.gif" alt="tenor"-->
@@ -104,6 +123,9 @@ function PlaySound(soundobj) {
 
 // Get the modal
 var modal = document.getElementById('myModal');
+
+// Get the modal
+var registermodal = document.getElementById('registermodal');
 
 // Get the button that opens the modal
 //var btn = document.getElementById("myBtn");

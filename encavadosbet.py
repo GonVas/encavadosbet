@@ -20,7 +20,7 @@ bd_cursor = bd.cursor()
 
 no_login_bar = ''' <ul class="topbar" >
   <li><a href="#login" onclick="login_click()">Mostar Carta de Caloiro &nbsp;</a></li>
-  <li><a href="#register"> Registar Carta de Caloiro</a></li>
+  <li><a href="#register" onclick="register_click()"> Registar Carta de Caloiro</a></li>
 
   <li style="float:right"><a class="active" href="#about">Engenharia</a></li>
 </ul> '''
