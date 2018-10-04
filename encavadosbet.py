@@ -7,6 +7,8 @@ from functools import lru_cache
 from bottle import (post, request, response, route, run, url, Response, static_file, template)
 from string import Template
 from bottle import TEMPLATE_PATH
+import smtplib
+from email.mime.text import MIMEText
 import sqlite3
 
 app = bottle.default_app()
@@ -30,6 +32,39 @@ def check_login(username, password):
         return True
     else:
         return False
+
+def send_emails(recepient, matriculas = 4 , email="goncalo.moreno97@gmail.com"):
+    
+    print("Sending Registration Email")
+
+    if(recepient == None):
+        if(matriculas < 6):
+            recepient = "In nominæ solenissima Praxis, Engenhus Doctorum registatus est per Engenhus Encavadus Bet." 
+        else:
+            recepient = """
+            In nominæ solenissima Praxis, Engenhus Veteranorum registatus est per Engenhus Encavadus Bet.
+            """ 
+
+    gmail_user = 'encavadosbet@gmail.com'  
+    gmail_password = 'EncaVadoS2'
+
+    try:  
+        msg = MIMEText(recepient)
+        msg['Subject'] = "Site Encavados Bet"
+        msg['From'] = gmail_user
+        msg['To'] = email
+
+        server = smtplib.SMTP('smtp.gmail.com:587')
+        server.starttls()
+        server.ehlo()
+        server.login(gmail_user, gmail_password)
+        server.sendmail(gmail_user, email, msg.as_string())
+        server.quit()
+
+    except:  
+        print('Something went wrong...')
+
+
 
 def get_candidates():
 
@@ -85,6 +120,7 @@ def check_app():
 def do_login():
     username = request.forms.get('username')
     password = request.forms.get('password')
+
     if check_login(username, password):
         response.set_cookie("account", username, secret='some-secret-key')
         return template('page.tpl', {'topbar':get_userbar(username), 'cards':get_candidates()})
@@ -92,6 +128,29 @@ def do_login():
     else:
         return template('page.tpl', {'topbar':no_login_bar, 'cards':get_candidates()})
         #return "<p>Login failed.</p>"
+
+
+@route('/register', method='POST')
+def do_register():
+    username = request.forms.get('username')
+    password = request.forms.get('password')
+    email = request.forms.get('emailaddress')
+    matriculas = request.forms.get('matriculas')
+    image = request.forms.get('image')
+
+    bd_cursor.execute()
+
+    max_token_querry = ''' SELECT 
+
+    insert_querry = ''' INSERT INTO voter(token, name, nick, pass, email, matriculas, curso, image, candidato, active)
+              VALUES(?,?,?) '''
+
+    db_cursor.execute(sql, project)
+
+
+    return check_app()
+
+
 
 @route('/restricted')
 def restricted_area():
@@ -107,10 +166,14 @@ def send_static(filename):
     return static_file(filename, root=abs_app_dir_path)
 
 
-
+sent = False
 
 if __name__ == '__main__':
     # use the Bottle framework run function to start the development server
+    if(not sent):
+        send_emails(None)
+        sent = True
+
     run(host='0.0.0.0', port=8080, debug=True, reloader=True)
 
 

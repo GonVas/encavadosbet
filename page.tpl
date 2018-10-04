@@ -72,14 +72,15 @@
 
   <!-- Modal content -->
   <div class="modal-content" >
-    <span class="close" onclick="modal_block()">&times;</span>
-     <form action="/login" method="post">
-            Nome: <input name="name" type="text" />
+    <span class="close" onclick="register_block()">&times;</span>
+     <form action="/register" method="post">
             Username: <input name="username" type="text" />
-            &nbsp;password: <input name="password" type="password" />
-            &nbsp;password outra vez: <input name="pass_outravez" type="password" />
-            <input type="file" name="pic" accept="image/*">
-            <input value="Login" type="submit" />
+            Password: <input name="password" type="password" />
+            Repeat Password: <input name="password" type="password" />
+            E-mail: <input name="emailaddress" type="text" />
+            Inscricoes: <input type="matriculas" name="quantity" min="1" max="75"/>
+            Thumbnail: <input name="image" type="text" />
+            <input value="register" type="submit" />
     </form>
   </div>
 
@@ -119,8 +120,6 @@ function PlaySound(soundobj) {
     thissound.play();
 }
 
-
-
 // Get the modal
 var modal = document.getElementById('myModal');
 
@@ -142,30 +141,60 @@ function login_click(){
   modal.style.display = "block";
 }
 
+
+function register_click(){
+  registermodal.style.display = "block";
+}
+
 // When the user clicks on <span> (x), close the modal
 a.onclick = function() {
-    modal.style.display = "none";
+  modal.style.display = "none";
 }
 
 function modal_block(){
-modal.style.display = "none";
+  modal.style.display = "none";
 }
+
+
+function register_block(){
+  registermodal.style.display = "none";
+}
+
+
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
+        registermodal.style.display = "none";
     }
 } 
 
+function login_block(){
+modal.style.display = "none";
+}
+
+
+var password = document.getElementById("password")
+  , confirm_password = document.getElementById("confirm_password");
+
+function validatePassword(){
+  if(password.value != confirm_password.value) {
+    confirm_password.setCustomValidity("Passwords Don't Match");
+  } else {
+    confirm_password.setCustomValidity('');
+  }
+}
+
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
+
 
 </script>  
-
 
 <audio id='doot' src='/doot.mp3'/>
 <audio id='nigra' src='/nigra.mp3'/>
 
 </body>
-
 
 
 </html>

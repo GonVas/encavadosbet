@@ -20,26 +20,26 @@ CREATE TABLE voter (
 	name text NOT NULL,
 	nick text NOT NULL,
 	pass text NOT NULL,
+  email text NOT NULL,
 
 	matriculas INTEGER,
-  	curso text,
+  curso text,
 
-  	image text NOT NULL,
+  image text NOT NULL,
 
-  	candidato INTEGER DEFAULT 0,
+  candidato INTEGER DEFAULT 0,
 	active INTEGER DEFAULT 0
 
 );
 
+INSERT INTO voter (token, name, nick, pass, email, matriculas, curso, image, candidato, active)
+VALUES(1, "Oco", "Oco", "oco", "goncalo.moreno97@gmail.com", 4, "Inph", "sample2", 1, 1);
 
-INSERT INTO voter (token, name, nick, pass, matriculas, curso, image, candidato, active)
-VALUES(1, "Oco", "Oco", "oco", 4, "Inph", "sample2", 1, 1);
+INSERT INTO voter (token, name, nick, pass, email, matriculas, curso, image, candidato, active)
+VALUES(2, "RODRIGUEZ", "RODRIGUEZ", "RODRIGUEZ","goncalo.moreno97@gmail.com", 10, "Electro", "sample", 1, 1);
 
-INSERT INTO voter (token, name, nick, pass, matriculas, curso, image, candidato, active)
-VALUES(2, "RODRIGUEZ", "RODRIGUEZ", "RODRIGUEZ", 10, "Electro", "sample", 1, 1);
-
-INSERT INTO voter (token, name, nick, pass, matriculas, curso, image, candidato, active)
-VALUES(3, "TOGAPI", "TOGAPI", "TOGAPI", 9, "Metal e Bio", "sample", 1, 1);
+INSERT INTO voter (token, name, nick, pass, email, matriculas, curso, image, candidato, active)
+VALUES(3, "TOGAPI", "TOGAPI", "TOGAPI", "goncalo.moreno97@gmail.com", 9, "Metal e Bio", "sample", 1, 1);
 
 INSERT INTO vote(vote_id, who, what_candidate, what_bet)
 VALUES(1, 1, 2, "3 Pranchas");
