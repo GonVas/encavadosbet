@@ -70,6 +70,7 @@ def send_emails(recepient, matriculas = 4 , email="goncalo.moreno97@gmail.com"):
     except:  
         print('Something went wrong...')
 
+def bet(username):
 
 
 def get_candidates():
@@ -104,6 +105,9 @@ def get_userbar(username):
   <li> <div> <img src="$image.jpg" alt="thumbnail" width="60" height="60" > </div> </li>
   <li><a> $name </a></li>
   <li><a> $matriculas inscricoes </a></li>
+
+  <li><a class="bet"> Apostar </a></li>
+
   <li style="float:right"><a class="active" href="#about">$curso</a></li>
 </ul>''').substitute(image=user[3],name = user[0], matriculas = user[1], curso = user[2])
     return login_bar
