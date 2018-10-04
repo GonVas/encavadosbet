@@ -9,6 +9,13 @@ CREATE TABLE vote (
   what_candidate INTEGER,
   what_bet text,
 
+  praxi_points INTEGER,
+  pranchas INTEGER,
+  sardas INTEGER,
+  tesouradas INTEGER,
+  unhadas INTEGER, 
+  penicadas INTEGER,
+
   FOREIGN KEY (what_candidate) REFERENCES voter(token),
   FOREIGN KEY (who) REFERENCES voter(token)
 );
@@ -41,11 +48,11 @@ VALUES(2, "RODRIGUEZ", "RODRIGUEZ", "RODRIGUEZ","goncalo.moreno97@gmail.com", 10
 INSERT INTO voter (token, name, nick, pass, email, matriculas, curso, image, candidato, active)
 VALUES(3, "TOGAPI", "TOGAPI", "TOGAPI", "goncalo.moreno97@gmail.com", 9, "Metal e Bio", "sample", 1, 1);
 
-INSERT INTO vote(vote_id, who, what_candidate, what_bet)
-VALUES(1, 1, 2, "3 Pranchas");
+INSERT INTO vote(vote_id, who, what_candidate, what_bet, praxi_points, pranchas, sardas, tesouradas, unhadas, penicadas)
+VALUES(1, 1, 2, "3 Pranchas", 10, 0, 0, 0, 0, 0);
 
-INSERT INTO vote(vote_id, who, what_candidate, what_bet)
-VALUES(2, 3, 2, "3 Unhadas");
+INSERT INTO vote(vote_id, who, what_candidate, what_bet, praxi_points, pranchas, sardas, tesouradas, unhadas, penicadas)
+VALUES(2, 3, 2, "3 Unhadas", 10, 0, 0, 0, 0, 0);
 
-INSERT INTO vote(vote_id, who, what_candidate, what_bet)
-VALUES(3, 2, 1, "1 Tesourada");
+INSERT INTO vote(vote_id, who, what_candidate, what_bet, praxi_points, pranchas, sardas, tesouradas, unhadas, penicadas)
+VALUES(3, 2, 1, "1 Tesourada", 10, 0, 0, 0, 0, 0);

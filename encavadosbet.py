@@ -28,9 +28,15 @@ no_login_bar = ''' <ul class="topbar" >
 </ul> '''
 
 def check_login(username, password):
-    if username == "Oco" and password == "Oco":
+
+    select_name_querry = "SELECT PASS from voter where voter.NICK = ?"
+    passw = bd_cursor.execute(select_name_querry, (username, )).fetchone()
+    
+    if(passw != None and passw[0] == password):
+        print("Succefully Login")
         return True
     else:
+        print("Uncessfully login")
         return False
 
 def send_emails(recepient, matriculas = 4 , email="goncalo.moreno97@gmail.com"):
@@ -113,8 +119,6 @@ def check_app():
         print("UnKnown user entered")
         return template('page.tpl', {'topbar':no_login_bar, 'cards':get_candidates()})
 
-    
-
 
 @route('/login', method='POST')
 def do_login():
@@ -133,23 +137,23 @@ def do_login():
 @route('/register', method='POST')
 def do_register():
     username = request.forms.get('username')
+    name = request.forms.get('name')
     password = request.forms.get('password')
     email = request.forms.get('emailaddress')
+    curso = request.forms.get('curso')
     matriculas = request.forms.get('matriculas')
     image = request.forms.get('image')
 
-    bd_cursor.execute()
+    max_tk = bd_cursor.execute("select max(Token) from voter").fetchone()[0];
 
-    max_token_querry = ''' SELECT 
+    insert_querry = "INSERT INTO voter(token, name, nick, pass, email, matriculas, curso, image, candidato, active) VALUES(?,?,?,?,?,?,?,?,?,?) "
 
-    insert_querry = ''' INSERT INTO voter(token, name, nick, pass, email, matriculas, curso, image, candidato, active)
-              VALUES(?,?,?) '''
+    bd_cursor.execute(insert_querry, (max_tk + 1, name, username, password, email, matriculas, curso, image, 0, 1))
+    bd.commit()
 
-    db_cursor.execute(sql, project)
-
+    print("Sucessfully added entry")
 
     return check_app()
-
 
 
 @route('/restricted')
@@ -171,7 +175,7 @@ sent = False
 if __name__ == '__main__':
     # use the Bottle framework run function to start the development server
     if(not sent):
-        send_emails(None)
+        #send_emails(None)
         sent = True
 
     run(host='0.0.0.0', port=8080, debug=True, reloader=True)

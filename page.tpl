@@ -74,9 +74,11 @@
   <div class="modal-content" >
     <span class="close" onclick="register_block()">&times;</span>
      <form action="/register" method="post">
+            Name: <input name="name" type="text" />
             Username: <input name="username" type="text" />
             Password: <input name="password" type="password" />
             Repeat Password: <input name="password" type="password" />
+            Curso: <input name="curso" type="text" />
             E-mail: <input name="emailaddress" type="text" />
             Inscricoes: <input type="matriculas" name="quantity" min="1" max="75"/>
             Thumbnail: <input name="image" type="text" />
