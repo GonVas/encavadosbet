@@ -70,8 +70,6 @@ def send_emails(recepient, matriculas = 4 , email="goncalo.moreno97@gmail.com"):
     except:  
         print('Something went wrong...')
 
-def bet(username):
-
 
 def get_candidates():
 
@@ -106,7 +104,7 @@ def get_userbar(username):
   <li><a> $name </a></li>
   <li><a> $matriculas inscricoes </a></li>
 
-  <li><a class="bet"> Apostar </a></li>
+  <li><a class="bet" onclick="get_bets()"> Apostas </a></li>
 
   <li style="float:right"><a class="active" href="#about">$curso</a></li>
 </ul>''').substitute(image=user[3],name = user[0], matriculas = user[1], curso = user[2])
@@ -159,6 +157,10 @@ def do_register():
 
     return check_app()
 
+@route('/getbet.json')
+def get_bets():
+    print("Username is : " + str(request.get_cookie("account", secret='some-secret-key')))
+    return ({'praxi_points': 100, 'sardas': 50})
 
 @route('/restricted')
 def restricted_area():

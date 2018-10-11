@@ -152,10 +152,14 @@ ul.topbar .active {
 }
 
 
-.bet{
+li > a.bet{
     background-color: green;
+    color: green;
 }
 
+a.bet{
+    margin-left: 4em;
+}
 
 
 

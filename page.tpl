@@ -88,6 +88,18 @@
 
 </div> 
 
+<!-- The Bet Show -->
+<div id="betmodal" class="modal">
+
+  <!-- Bet Contents -->
+  <div class="modal-content" >
+    <span class="close" onclick="betmodal_close()">&times;</span>
+
+  </div>
+
+</div> 
+
+
 
     <div class="spooky">
       <img src="doot.gif" class="floatl" alt="skeleton" onmouseover="PlaySound('doot')">
@@ -128,6 +140,8 @@ var modal = document.getElementById('myModal');
 // Get the modal
 var registermodal = document.getElementById('registermodal');
 
+var betmodal = document.getElementById('betmodal')
+
 // Get the button that opens the modal
 //var btn = document.getElementById("myBtn");
 
@@ -137,6 +151,10 @@ var span = document.getElementsByClassName("close")[0];
 // When the user clicks on the button, open the modal
 btn.onclick = function() {
     modal.style.display = "block";
+}
+
+function betmodal_close(){
+  betmodal.style.display = "block";
 }
 
 function login_click(){
@@ -175,6 +193,29 @@ function login_block(){
 modal.style.display = "none";
 }
 
+function get_bets(element){
+  
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+          var jsonobj = JSON.parse(this.responseText); 
+          
+          let all_bets = ""
+          for (i in jsonobj) {
+            all_bets += i + " : " + jsonobj[i] + " \n"
+          }
+
+          alert(all_bets)
+      }
+    };
+    xhttp.open("GET", 'getbet.json', true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    //xhttp.send(post_par); 
+    xhttp.send()
+    return xhttp.responseText
+
+
+}
 
 var password = document.getElementById("password")
   , confirm_password = document.getElementById("confirm_password");
@@ -189,6 +230,20 @@ function validatePassword(){
 
 password.onchange = validatePassword;
 confirm_password.onkeyup = validatePassword;
+
+
+function ajax_req(url) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      return this.responseText;
+    }
+  };
+  xhttp.open("POST", url, true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  //xhttp.send(post_par); 
+  return xhttp.responseText
+}
 
 
 </script>  
